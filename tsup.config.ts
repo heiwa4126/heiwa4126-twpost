@@ -1,14 +1,14 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-	entry: ["src/index.ts", "src/main.ts"],
+	entry: ["src/index.ts"],
 	format: ["esm", "cjs"],
 	target: "node18",
 	outDir: "dist",
-	bundle: false,
+	bundle: true,
 	splitting: false,
 	sourcemap: false,
-	minify: true,
+	minify: false,
 	clean: true,
 	dts: {
 		resolve: true,
