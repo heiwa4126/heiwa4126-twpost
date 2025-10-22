@@ -1,9 +1,15 @@
-# project1
+# heiwa4126-twpost
 
-TypeScrip でパッケージを書いて
-EMS と CJS にするプロジェクトのテンプレート。
+Teams の Workflows (Teams 版 Power Automate)の
+「Webhook 要求を受信したらチャットに投稿する」テンプレートから作った workflow の
+webhook に
+Adaptive Cards 形式で投稿する関数のパッケージ
 
-GitHub から npm への Trusted Publishing のワークフロー付き。
+## インストール
+
+```sh
+npm install @heiwa4126/twpost
+```
 
 ## 開発
 

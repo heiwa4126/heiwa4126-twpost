@@ -1,3 +1,3 @@
-import { greet } from "project1";
+import { greet } from "@heiwa4126/twpost";
 
 console.log(greet());

@@ -1,2 +1,2 @@
-const { greet } = require("project1");
+const { greet } = require("@heiwa4126/twpost");
 console.log(greet());

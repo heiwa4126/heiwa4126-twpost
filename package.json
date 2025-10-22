@@ -1,6 +1,6 @@
 {
-	"name": "project1",
-	"version": "1.0.0",
+	"name": "@heiwa4126/twpost",
+	"version": "0.0.0",
 	"description": "tsup test",
 	"type": "module",
 	"main": "./dist/index.cjs",
@@ -13,15 +13,12 @@
 			"import": "./dist/index.js"
 		}
 	},
-	"bin": {
-		"project1": "dist/main.js"
-	},
 	"scripts": {
 		"init": "npm i && npm run build && npm run link",
 		"prepublishOnly": "npm run clean && npm run build && npm run test:run && npm run smoketest",
 		"clean": "rm -rf dist",
 		"build": "tsup",
-		"link": "mkdir -p node_modules && ln -sfn ../dist node_modules/project1",
+		"link": "mkdir -p node_modules/@heiwa4126 && ln -sfn ../../dist node_modules/@heiwa4126/twpost",
 		"test": "vitest run",
 		"test:run": "vitest run",
 		"test:watch": "vitest --watch",
@@ -35,15 +32,12 @@
 		"audit": "npm audit && trivy fs --scanners vuln package.json"
 	},
 	"keywords": [
-		"hello-world",
-		"example",
-		"demo",
+		"MS Teams",
+		"Adaptive Cards",
 		"typescript",
+		"package",
 		"esm",
 		"commonjs",
-		"cli",
-		"tsup",
-		"learning",
 		"sigstore",
 		"trusted-publishing",
 		"github-actions"
@@ -63,5 +57,8 @@
 		"tsx": "^4.20.6",
 		"typescript": "^5.9.3",
 		"vitest": "^3.2.4"
+	},
+	"dependencies": {
+		"adaptivecards": "^3.0.5"
 	}
 }
