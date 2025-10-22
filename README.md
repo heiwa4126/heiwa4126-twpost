@@ -17,3 +17,10 @@ npm install @heiwa4126/twpost
 npm run init  # `npm init` ではない
 npm run smoketest
 ```
+
+## メモ
+
+[adaptivecards - npm](https://www.npmjs.com/package/adaptivecards)
+は壊れているので
+[@microsoft/teams.cards - npm](https://www.npmjs.com/package/@microsoft/teams.cards)
+を使いました。

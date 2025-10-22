@@ -1,7 +1,7 @@
 {
 	"name": "@heiwa4126/twpost",
 	"version": "0.0.0",
-	"description": "tsup test",
+	"description": "(working...)",
 	"type": "module",
 	"main": "./dist/index.cjs",
 	"module": "./dist/index.js",
@@ -60,6 +60,6 @@
 		"vitest": "^3.2.4"
 	},
 	"dependencies": {
-		"adaptivecards": "^3.0.5"
+		"@microsoft/teams.cards": "^2.0.2"
 	}
 }

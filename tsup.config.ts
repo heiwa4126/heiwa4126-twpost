@@ -10,7 +10,7 @@ export default defineConfig({
 	sourcemap: false,
 	minify: false,
 	clean: true,
-	external: ["adaptivecards"],
+	external: ["@microsoft/teams.cards"],
 	dts: {
 		resolve: true,
 		entry: ["src/index.ts"],

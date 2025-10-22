@@ -1,7 +1,7 @@
 /**
  * Teams Webhook API用のユーティリティ関数群
  */
-import { AdaptiveCard, TextBlock } from "@microsoft/teams.cards";
+// import * as AdaptiveCards from "adaptivecards";
 
 /**
  * Webhook のレスポンス情報を格納する型
@@ -33,21 +33,24 @@ export async function postTextToTeamsWebhook(
 	messageText: string,
 ): Promise<WebHookResponse> {
 	// Adaptive Card フォーマットでメッセージを構成
-	const card = new AdaptiveCard(
-		new TextBlock(messageText, {
-			wrap: true,
-		}),
-	).withOptions({
-		version: "1.5",
-		$schema: "http://adaptivecards.io/schemas/adaptive-card.json",
-	});
-
-	// Teams Webhook 用のペイロードを構成
+	// テキストだけなのでライブラリ不使用
 	const payload = {
 		attachments: [
 			{
 				contentType: "application/vnd.microsoft.card.adaptive",
-				content: card,
+				content: {
+					$schema: "http://adaptivecards.io/schemas/adaptive-card.json",
+					type: "AdaptiveCard",
+					version: "1.2",
+					body: [
+						{
+							type: "TextBlock",
+							text: messageText,
+							wrap: true,
+							markdown: true,
+						},
+					],
+				},
 			},
 		],
 	};
