@@ -3,4 +3,4 @@
  */
 
 // postText.ts からすべてのエクスポートを再エクスポート
-export * from "./postText0";
+export * from "./postText";

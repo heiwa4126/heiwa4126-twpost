@@ -8,7 +8,7 @@ export default defineConfig({
 	bundle: true,
 	splitting: false,
 	sourcemap: false,
-	minify: false,
+	minify: true,
 	clean: true,
 	external: ["@microsoft/teams.cards"],
 	dts: {

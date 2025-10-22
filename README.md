@@ -5,6 +5,8 @@ Teams の Workflows (Teams 版 Power Automate)の
 webhook に
 Adaptive Cards 形式で投稿する関数のパッケージ
 
+twpost は "Teams Webhook Post" の略です。
+
 ## インストール
 
 ```sh

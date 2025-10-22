@@ -46,7 +46,7 @@
 	"author": "heiwa4126 <heiwa4126@gmail.com>",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/heiwa4126/project1.git"
+		"url": "git+https://github.com/heiwa4126/heiwa4126-twpost.git"
 	},
 	"license": "MIT",
 	"engines": {

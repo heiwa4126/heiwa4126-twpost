@@ -8,5 +8,5 @@ const webhookUrl = process.env.TEAMS_WEBHOOK_URL ?? "";
 if (webhookUrl === "") {
 	throw new Error("TEAMS_WEBHOOK_URL environment variable is required");
 }
-const result = await postTextToTeamsWebhook(webhookUrl, "**Hello!** from example/ex2.ts!");
+const result = await postTextToTeamsWebhook(webhookUrl, "**Hello!** from *example/ex2.ts*!");
 displayWebhookResult(result);
