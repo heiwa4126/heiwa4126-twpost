@@ -10,6 +10,7 @@ export default defineConfig({
 	sourcemap: false,
 	minify: false,
 	clean: true,
+	external: ["adaptivecards"],
 	dts: {
 		resolve: true,
 		entry: ["src/index.ts"],
