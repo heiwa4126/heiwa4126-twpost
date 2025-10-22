@@ -27,7 +27,7 @@
 		"format": "biome format --write .",
 		"format:full": "npm pkg fix && biome format --write . && dprint fmt && textlint --fix \"**/*.md\"",
 		"ex1": "node ./example/ex1.mjs && node ./example/ex1.cjs && tsx ./example/ex1.ts",
-		"ex2": ". .env && node example/ex2.mjs && node ./example/ex2.cjs && tsx ./example/ex2.ts",
+		"ex2": ". .env && tsx ./example/ex2.ts",
 		"smoketest": "npm run ex1",
 		"security": "trivy fs --skip-dirs node_modules,cdk.out . && trivy config --skip-dirs node_modules,cdk.out .",
 		"audit": "npm audit && trivy fs --scanners vuln package.json"
@@ -54,6 +54,7 @@
 	},
 	"devDependencies": {
 		"@types/node": "^24.9.1",
+		"ts-node": "^10.9.2",
 		"tsup": "^8.5.0",
 		"tsx": "^4.20.6",
 		"typescript": "^5.9.3",

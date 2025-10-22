@@ -24,3 +24,8 @@ npm run smoketest
 は壊れているので
 [@microsoft/teams.cards - npm](https://www.npmjs.com/package/@microsoft/teams.cards)
 を使いました。
+
+@microsoft/teams.cards で使える Markdown 風記述
+
+- [テキスト機能 - Adaptive Cards | Microsoft Learn](https://learn.microsoft.com/ja-jp/adaptive-cards/authoring-cards/text-features)
+- [Markdown Reference](https://commonmark.org/help/)
