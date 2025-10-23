@@ -2,7 +2,7 @@
 // [Adaptive Card Designer](https://adaptivecards.microsoft.com/designer) で作成した
 // Adaptive Card の JSONペイロードを直接使用する例
 
-import { type AC15, displayWebhookResult, postAdaptiveCard15 } from "@heiwa4126/twpost";
+import { type AC15, displayWebhookResult, postCard } from "@heiwa4126/twpost";
 import { getWebhookUrl } from "./hookUrl.js";
 
 const webhookUrl = getWebhookUrl();
@@ -42,5 +42,5 @@ const payload: AC15 = {
 	],
 };
 
-const result = await postAdaptiveCard15(webhookUrl, payload);
+const result = await postCard(webhookUrl, payload);
 displayWebhookResult(result);

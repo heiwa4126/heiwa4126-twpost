@@ -46,15 +46,16 @@ export async function postText(webhookUrl: string, text: string): Promise<WebHoo
  * Teams Workflows Webhook URL に Adaptive Card 形式のメッセージを送信する。
  * postPayload() の TypeScript ラッパー。型チェック不要と思うなら直に postPayload() を呼んでもいい
  *
+ * **注意:** JSONスキーマがちゃんとメンテされておらず、存在しない要素タイプがある
+
  * @param webhookUrl - Teams Workflows Webhook の URL
- * @param card - Teams に投稿する@microsoft/teams.cardsのAdaptiveCardオブジェクト
+ * @param card - Teams に投稿するAdaptiveCardオブジェクト（@microsoft/teams.cards または AC15 (Adaptive Cards v1.5)）
  * @returns Promise<WebHookResponse> - レスポンス情報
  */
-export async function postCard(webhookUrl: string, card: AdaptiveCard): Promise<WebHookResponse> {
-	return postPayload(webhookUrl, card);
-}
-
-export async function postAdaptiveCard15(webhookUrl: string, card: AC15): Promise<WebHookResponse> {
+export async function postCard<T extends AdaptiveCard | AC15>(
+	webhookUrl: string,
+	card: T,
+): Promise<WebHookResponse> {
 	return postPayload(webhookUrl, card);
 }
 
