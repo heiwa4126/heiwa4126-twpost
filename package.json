@@ -38,15 +38,15 @@
 		"types": "curl -s https://adaptivecards.io/schemas/1.5.0/adaptive-card.json | npx json-schema-to-typescript --no-additionalProperties > src/adaptive-card-v1.5.d.ts"
 	},
 	"keywords": [
-		"MS Teams",
-		"Adaptive Cards",
+		"adaptivecards",
+		"microsoftteams",
 		"typescript",
 		"package",
 		"esm",
 		"commonjs",
 		"sigstore",
-		"trusted-publishing",
-		"github-actions"
+		"trustedpublishing",
+		"githubactions"
 	],
 	"author": "heiwa4126 <heiwa4126@gmail.com>",
 	"repository": {
