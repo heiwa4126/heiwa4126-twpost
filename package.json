@@ -15,7 +15,7 @@
 	},
 	"scripts": {
 		"init": "npm i && npm run build && npm run link",
-		"prepublishOnly": "npm run clean && npm run build && npm run test:run && npm run smoketest",
+		"prepublishOnly": "npm run clean && npm run build && npm run link && npm run test:run && npm run smoketest",
 		"clean": "rm -rf dist",
 		"build": "tsup",
 		"link": "mkdir -p node_modules/@heiwa4126 && ln -sfn ../../dist node_modules/@heiwa4126/twpost",
@@ -26,10 +26,10 @@
 		"lint:full": "biome lint . --fix && tsc --noEmit && actionlint -verbose",
 		"format": "biome format --write .",
 		"format:full": "npm pkg fix && biome format --write . && dprint fmt && textlint --fix \"**/*.md\"",
+		"smoketest": "node ./example/st.mjs && node ./example/st.cjs && ts-node ./example/st.ts",
 		"ex1": ". .env && tsx ./example/ex1.ts",
 		"ex2": ". .env && tsx ./example/ex2.ts",
 		"ex3": ". .env && tsx ./example/ex3.ts",
-		"smoketest": "node ./example/st.mjs && node ./example/st.cjs && ts-node ./example/st.ts",
 		"security": "trivy fs --skip-dirs node_modules,cdk.out . && trivy config --skip-dirs node_modules,cdk.out .",
 		"audit": "npm audit && trivy fs --scanners vuln package.json"
 	},

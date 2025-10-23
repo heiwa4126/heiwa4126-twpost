@@ -22,8 +22,7 @@ export function displayWebhookResult(webhookResponse: WebHookResponse): void {
 }
 
 /**
- * Teams Workflows Webhook URL に Adaptive Card 形式のメッセージを送信する関数
- *
+ * Teams Workflows Webhook URL に text 形式のメッセージを送信する
  * @param webhookUrl - Teams Workflows Webhook の URL
  * @param text - Teams に投稿するテキストメッセージ。限定的な markdown をサポート
  * @returns Promise<WebHookResponse> - レスポンス情報
@@ -43,8 +42,8 @@ export async function postText(webhookUrl: string, text: string): Promise<WebHoo
 }
 
 /**
- * Teams Workflows Webhook URL に Adaptive Card 形式のメッセージを送信する関数
- * postPayload() のTypeScriptのラッパーでしかない。直にpostPayload() を呼んでもいい
+ * Teams Workflows Webhook URL に Adaptive Card 形式のメッセージを送信する。
+ * postPayload() の TypeScript ラッパー。型チェック不要と思うなら直に postPayload() を呼んでもいい
  *
  * @param webhookUrl - Teams Workflows Webhook の URL
  * @param card - Teams に投稿する@microsoft/teams.cardsのAdaptiveCardオブジェクト
@@ -55,10 +54,9 @@ export async function postCard(webhookUrl: string, card: AdaptiveCard): Promise<
 }
 
 /**
- * Teams Workflows Webhook URL に Objectを送信する。
- * ObjectはAdaptive Card 形式のpayloadであることを想定しているが、ベリファイしていないので注意
- *
- * Adaptive Card 形式のメッセージを送信する関数
+ * Teams Workflows Webhook URL に payload を送信する。
+ * payload は Adaptive Card 形式の payload であることを想定しているが、ベリファイしていないので注意
+ * 必要なら JSON Schema によるバリデーションを追加すること(http://adaptivecards.io/schemas/adaptive-card.json)
  *
  * @param webhookUrl - Teams Workflows Webhook の URL
  * @param payload: - Teams に投稿する
