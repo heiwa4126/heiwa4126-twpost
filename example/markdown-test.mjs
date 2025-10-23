@@ -1,4 +1,4 @@
-import { AdaptiveCard, TextBlock, RichTextBlock, TextRun } from "@microsoft/teams.cards";
+import { AdaptiveCard, RichTextBlock, TextBlock, TextRun } from "@microsoft/teams.cards";
 
 console.log("=== TextBlock with Markdown Test ===");
 
@@ -6,7 +6,7 @@ console.log("=== TextBlock with Markdown Test ===");
 const cardWithMarkdown = new AdaptiveCard(
 	new TextBlock("**Bold text**, *italic text*, and [link](https://example.com)", {
 		wrap: true,
-	})
+	}),
 ).withOptions({
 	version: "1.5",
 	$schema: "http://adaptivecards.io/schemas/adaptive-card.json",
@@ -22,8 +22,8 @@ const cardWithRichText = new AdaptiveCard(
 		new TextRun("Bold text", { weight: "Bolder" }),
 		", ",
 		new TextRun("italic text", { italic: true }),
-		", and regular text"
-	)
+		", and regular text",
+	),
 ).withOptions({
 	version: "1.5",
 	$schema: "http://adaptivecards.io/schemas/adaptive-card.json",

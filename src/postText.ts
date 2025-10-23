@@ -25,16 +25,13 @@ export function displayWebhookResult(webhookResponse: WebHookResponse): void {
  * Teams Workflows Webhook URL に Adaptive Card 形式のメッセージを送信する関数
  *
  * @param webhookUrl - Teams Workflows Webhook の URL
- * @param messageText - Teams に投稿するメッセージ本文
+ * @param text - Teams に投稿するテキストメッセージ。限定的な markdown をサポート
  * @returns Promise<WebHookResponse> - レスポンス情報
  */
-export async function postTextToTeamsWebhook(
-	webhookUrl: string,
-	messageText: string,
-): Promise<WebHookResponse> {
+export async function postText(webhookUrl: string, text: string): Promise<WebHookResponse> {
 	// Adaptive Card フォーマットでメッセージを構成
 	const card = new AdaptiveCard(
-		new TextBlock(messageText, {
+		new TextBlock(text, {
 			wrap: true,
 		}),
 	).withOptions({
@@ -42,6 +39,18 @@ export async function postTextToTeamsWebhook(
 		$schema: "http://adaptivecards.io/schemas/adaptive-card.json",
 	});
 
+	return postPayload(webhookUrl, card);
+}
+
+/**
+ * Teams Workflows Webhook URL に Adaptive Card 形式のメッセージを送信する関数
+ * postPayload() のTypeScriptのラッパーでしかない。直にpostPayload() を呼んでもいい
+ *
+ * @param webhookUrl - Teams Workflows Webhook の URL
+ * @param card - Teams に投稿する@microsoft/teams.cardsのAdaptiveCardオブジェクト
+ * @returns Promise<WebHookResponse> - レスポンス情報
+ */
+export async function postCard(webhookUrl: string, card: AdaptiveCard): Promise<WebHookResponse> {
 	return postPayload(webhookUrl, card);
 }
 

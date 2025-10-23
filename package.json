@@ -26,9 +26,10 @@
 		"lint:full": "biome lint . --fix && tsc --noEmit && actionlint -verbose",
 		"format": "biome format --write .",
 		"format:full": "npm pkg fix && biome format --write . && dprint fmt && textlint --fix \"**/*.md\"",
-		"ex1": "node ./example/ex1.mjs && node ./example/ex1.cjs && tsx ./example/ex1.ts",
+		"ex1": ". .env && tsx ./example/ex1.ts",
 		"ex2": ". .env && tsx ./example/ex2.ts",
-		"smoketest": "npm run ex1",
+		"ex3": ". .env && tsx ./example/ex3.ts",
+		"smoketest": "node ./example/st.mjs && node ./example/st.cjs && ts-node ./example/st.ts",
 		"security": "trivy fs --skip-dirs node_modules,cdk.out . && trivy config --skip-dirs node_modules,cdk.out .",
 		"audit": "npm audit && trivy fs --scanners vuln package.json"
 	},
