@@ -9,7 +9,7 @@ import { getWebhookUrl } from "./hookUrl.js";
 
 const webhookUrl = getWebhookUrl();
 
-const rawCard: IAdaptiveCard = {
+const card: IAdaptiveCard = {
 	type: "AdaptiveCard",
 	body: [
 		{
@@ -53,5 +53,5 @@ const rawCard: IAdaptiveCard = {
 	version: "1.5",
 };
 
-const result = await postCard(webhookUrl, rawCard);
+const result = await postCard(webhookUrl, card);
 displayWebhookResult(result);

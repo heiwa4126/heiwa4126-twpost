@@ -32,6 +32,7 @@
 		"ex3": ". .env && tsx ./example/ex3.ts",
 		"ex4": ". .env && tsx ./example/ex4.ts",
 		"ex5": ". .env && tsx ./example/ex5.ts",
+		"ex6": ". .env && tsx ./example/ex6.ts",
 		"security": "trivy fs --skip-dirs node_modules,cdk.out . && trivy config --skip-dirs node_modules,cdk.out .",
 		"audit": "npm audit && trivy fs --scanners vuln package.json",
 		"types": "curl -s https://adaptivecards.io/schemas/1.5.0/adaptive-card.json | npx json-schema-to-typescript --no-additionalProperties > src/adaptive-card-v1.5.d.ts"
@@ -58,7 +59,6 @@
 	},
 	"devDependencies": {
 		"@types/node": "^24.9.1",
-		"json-schema-to-typescript": "^15.0.4",
 		"ts-node": "^10.9.2",
 		"tsup": "^8.5.0",
 		"tsx": "^4.20.6",

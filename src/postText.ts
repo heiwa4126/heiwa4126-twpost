@@ -4,7 +4,6 @@
 
 import type { IAdaptiveCard } from "@microsoft/teams.cards";
 import { AdaptiveCard, TextBlock } from "@microsoft/teams.cards";
-// import type { AdaptiveCard as AC15 } from "./adaptive-card-v1.5.d.ts";
 
 /**
  * Webhook のレスポンス情報を格納する型
