@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
 	displayWebhookResult,
 	postCard,
-	postPayload,
+	postRawCard,
 	postText,
 	type WebHookResponse,
 } from "../src/postText";
@@ -38,7 +38,7 @@ describe("postText", () => {
 	});
 
 	describe("postText", () => {
-		it("should create an adaptive card and send it via postPayload", async () => {
+		it("should create an adaptive card and send it via postRawCard", async () => {
 			// Mock successful response
 			mockFetch.mockResolvedValueOnce({
 				status: 200,
@@ -82,7 +82,7 @@ describe("postText", () => {
 	});
 
 	describe("postCard", () => {
-		it("should send an AdaptiveCard via postPayload", async () => {
+		it("should send an AdaptiveCard via postRawCard", async () => {
 			mockFetch.mockResolvedValueOnce({
 				status: 200,
 				text: () => Promise.resolve("1"),
@@ -101,7 +101,7 @@ describe("postText", () => {
 		});
 	});
 
-	describe("postPayload", () => {
+	describe("postRawCard", () => {
 		it("should send a POST request with correct headers and body structure", async () => {
 			mockFetch.mockResolvedValueOnce({
 				status: 200,
@@ -114,7 +114,7 @@ describe("postText", () => {
 				body: [{ type: "TextBlock", text: "Test" }],
 			};
 
-			const result = await postPayload(testWebhookUrl, testPayload);
+			const result = await postRawCard(testWebhookUrl, testPayload);
 
 			expect(mockFetch).toHaveBeenCalledWith(testWebhookUrl, {
 				method: "POST",
@@ -142,7 +142,7 @@ describe("postText", () => {
 				text: () => Promise.resolve(mockResponseText),
 			});
 
-			const result = await postPayload(testWebhookUrl, {});
+			const result = await postRawCard(testWebhookUrl, {});
 
 			expect(result.statusCode).toBe(201);
 			expect(result.response).toBe(mockResponseText);
@@ -155,7 +155,7 @@ describe("postText", () => {
 				text: () => Promise.resolve("Bad Request"),
 			});
 
-			const result = await postPayload(testWebhookUrl, {});
+			const result = await postRawCard(testWebhookUrl, {});
 
 			expect(result.statusCode).toBe(400);
 			expect(result.response).toBe("Bad Request");
@@ -165,7 +165,7 @@ describe("postText", () => {
 			const errorMessage = "Network error";
 			mockFetch.mockRejectedValueOnce(new Error(errorMessage));
 
-			const result = await postPayload(testWebhookUrl, {});
+			const result = await postRawCard(testWebhookUrl, {});
 
 			expect(result.statusCode).toBe(0);
 			expect(result.response).toBe(errorMessage);
@@ -175,7 +175,7 @@ describe("postText", () => {
 		it("should handle unknown errors", async () => {
 			mockFetch.mockRejectedValueOnce("Unknown error");
 
-			const result = await postPayload(testWebhookUrl, {});
+			const result = await postRawCard(testWebhookUrl, {});
 
 			expect(result.statusCode).toBe(0);
 			expect(result.response).toBe("Unknown error");
@@ -190,7 +190,7 @@ describe("postText", () => {
 			});
 
 			const testPayload = { test: "data" };
-			await postPayload(testWebhookUrl, testPayload);
+			await postRawCard(testWebhookUrl, testPayload);
 
 			const call = mockFetch.mock.calls[0];
 			const body = JSON.parse(call[1].body);

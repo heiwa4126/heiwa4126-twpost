@@ -3,7 +3,7 @@
 // [Building Adaptive Cards | Teams AI Library (v2)](https://microsoft.github.io/teams-ai/typescript/in-depth-guides/adaptive-cards/building-adaptive-cards)
 // のサンプルを流用
 
-import { displayWebhookResult, postPayload } from "@heiwa4126/twpost";
+import { displayWebhookResult, postCard } from "@heiwa4126/twpost";
 import type { IAdaptiveCard } from "@microsoft/teams.cards";
 import { getWebhookUrl } from "./hookUrl.js";
 
@@ -53,5 +53,5 @@ const rawCard: IAdaptiveCard = {
 	version: "1.5",
 };
 
-const result = await postPayload(webhookUrl, rawCard);
+const result = await postCard(webhookUrl, rawCard);
 displayWebhookResult(result);

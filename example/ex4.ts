@@ -2,12 +2,13 @@
 // [Adaptive Card Designer](https://adaptivecards.microsoft.com/designer) で作成した
 // Adaptive Card の JSONペイロードを直接使用する例
 
-import { type AC15, displayWebhookResult, postCard } from "@heiwa4126/twpost";
+import { displayWebhookResult, postCard } from "@heiwa4126/twpost";
+import type { IAdaptiveCard } from "@microsoft/teams.cards";
 import { getWebhookUrl } from "./hookUrl.js";
 
 const webhookUrl = getWebhookUrl();
 
-const payload: AC15 = {
+const payload: IAdaptiveCard = {
 	type: "AdaptiveCard",
 	$schema: "https://adaptivecards.io/schemas/adaptive-card.json",
 	version: "1.5",
@@ -17,14 +18,15 @@ const payload: AC15 = {
 			wrap: true,
 			text: "**処理を開始しました** (ID=USO800)",
 		},
-		// https://adaptivecards.io/schemas/1.5.0/adaptive-card.json に存在しないので
-		// 型チェックエラーになる。ProgressRing は最新のスキーマ(1.6.0)にも無い
-		// {
-		// 	type: "ProgressRing",
-		// 	label: "処理進行中...",
-		// 	labelPosition: "After",
-		// 	size: "Tiny",
-		// },
+		// ここは型チェックエラーになる。
+		// ProgressRing は最新のスキーマ(1.6.0)にも無い。でもTeamsではレンダリングされる
+		// unknownキャストでProgressRingを許可
+		{
+			type: "ProgressRing",
+			label: "処理進行中...",
+			labelPosition: "After",
+			size: "Tiny",
+		} as unknown as IAdaptiveCard["body"][0],
 	],
 	actions: [
 		{

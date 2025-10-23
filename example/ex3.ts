@@ -44,6 +44,6 @@ const card = new AdaptiveCard(
 });
 
 const result = await postCard(webhookUrl, card);
-// 実は const result = await postPayload(webhookUrl, card); でも同じ結果。こちらは型チェックが無い
+// 実は const result = await postRawCard(webhookUrl, card); でも同じ結果。こちらは型チェックが無い
 
 displayWebhookResult(result);

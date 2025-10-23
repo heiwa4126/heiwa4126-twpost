@@ -1,8 +1,10 @@
 /**
  * Teams Webhook API用のユーティリティ関数群
  */
+
+import type { IAdaptiveCard } from "@microsoft/teams.cards";
 import { AdaptiveCard, TextBlock } from "@microsoft/teams.cards";
-import type { AdaptiveCard as AC15 } from "./adaptive-card-v1.5.d.ts";
+// import type { AdaptiveCard as AC15 } from "./adaptive-card-v1.5.d.ts";
 
 /**
  * Webhook のレスポンス情報を格納する型
@@ -39,12 +41,12 @@ export async function postText(webhookUrl: string, text: string): Promise<WebHoo
 		$schema: "http://adaptivecards.io/schemas/adaptive-card.json",
 	});
 
-	return postPayload(webhookUrl, card);
+	return postRawCard(webhookUrl, card);
 }
 
 /**
  * Teams Workflows Webhook URL に Adaptive Card 形式のメッセージを送信する。
- * postPayload() の TypeScript ラッパー。型チェック不要と思うなら直に postPayload() を呼んでもいい
+ * postRawCard() の TypeScript ラッパー。型チェック不要と思うなら直に postRawCard() を呼んでもいい
  *
  * **注意:** JSONスキーマがちゃんとメンテされておらず、存在しない要素タイプがある
 
@@ -52,27 +54,24 @@ export async function postText(webhookUrl: string, text: string): Promise<WebHoo
  * @param card - Teams に投稿するAdaptiveCardオブジェクト(@microsoft/teams.cards または AC15 (Adaptive Cards v1.5))
  * @returns Promise<WebHookResponse> - レスポンス情報
  */
-export async function postCard<T extends AdaptiveCard | AC15>(
-	webhookUrl: string,
-	card: T,
-): Promise<WebHookResponse> {
-	return postPayload(webhookUrl, card);
+export async function postCard(webhookUrl: string, card: IAdaptiveCard): Promise<WebHookResponse> {
+	return postRawCard(webhookUrl, card);
 }
 
 /**
- * Teams Workflows Webhook URL に payload を送信する。
- * payload は Adaptive Card 形式の payload であることを想定。バリデーションはしない。
+ * Teams Workflows Webhook URL にオブジェクトを送信する。
+ * rawCard は Adaptive Card 形式であることを期待。バリデーションはしない
  *
  * @param webhookUrl - Teams Workflows Webhook の URL
- * @param payload - Teams に投稿するオブジェクト (Adaptive Card 形式であることを期待する)
+ * @param rawCard - Teams に投稿するオブジェクト(Adaptive Card 形式を期待)
  * @returns Promise<WebHookResponse> - レスポンス情報
  */
-export async function postPayload(webhookUrl: string, payload: object): Promise<WebHookResponse> {
+export async function postRawCard(webhookUrl: string, rawCard: object): Promise<WebHookResponse> {
 	const encodedMsg = JSON.stringify({
 		attachments: [
 			{
 				contentType: "application/vnd.microsoft.card.adaptive",
-				content: payload,
+				content: rawCard,
 			},
 		],
 	});
