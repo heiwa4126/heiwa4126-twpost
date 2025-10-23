@@ -2,7 +2,7 @@
 // [Adaptive Card Designer](https://adaptivecards.microsoft.com/designer) で作成した
 // Adaptive Card の JSONペイロードを直接使用する例
 
-import { displayWebhookResult, postCard } from "@heiwa4126/twpost";
+import { displayWebhookResult, postCard, SCHEMA_URL } from "@heiwa4126/twpost";
 import type { IAdaptiveCard } from "@microsoft/teams.cards";
 import { getWebhookUrl } from "./hookUrl.js";
 
@@ -10,7 +10,7 @@ const webhookUrl = getWebhookUrl();
 
 const payload: IAdaptiveCard = {
 	type: "AdaptiveCard",
-	$schema: "https://adaptivecards.io/schemas/adaptive-card.json",
+	$schema: SCHEMA_URL,
 	version: "1.5",
 	body: [
 		{

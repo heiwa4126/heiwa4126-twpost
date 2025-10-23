@@ -1,16 +1,16 @@
 // 重要: `npm run build` の 後に実行してください
 //
 // [Adaptive Card Designer](https://adaptivecards.microsoft.com/designer) で作成した
-// Adaptive Card の JSONペイロードを直接使用する例
+// Adaptive Card の JSONペイロードを直接使用する例. 間違った書式でも送信できてしまう
 
-import { displayWebhookResult, postRawCard } from "@heiwa4126/twpost";
+import { displayWebhookResult, postRawCard, SCHEMA_URL } from "@heiwa4126/twpost";
 import { getWebhookUrl } from "./hookUrl.js";
 
 const webhookUrl = getWebhookUrl();
 
 const payload = {
 	type: "AdaptiveCard",
-	$schema: "https://adaptivecards.io/schemas/adaptive-card.json",
+	$schema: SCHEMA_URL,
 	version: "1.5",
 	body: [
 		{

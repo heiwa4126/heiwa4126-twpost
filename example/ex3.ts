@@ -1,7 +1,7 @@
 // 重要: `npm run build` の 後に実行してください
 // @microsoft/teams.cardsを使用してAdaptive Cardを作成するサンプル
 
-import { displayWebhookResult, postCard } from "@heiwa4126/twpost";
+import { displayWebhookResult, postCard, SCHEMA_URL } from "@heiwa4126/twpost";
 import { AdaptiveCard, DonutChart, DonutChartData, TextBlock } from "@microsoft/teams.cards";
 import { getWebhookUrl } from "./hookUrl.js";
 
@@ -40,7 +40,7 @@ const card = new AdaptiveCard(
 	// new FactSet().withFacts(...chartData.map((item) => new Fact(item.legend, item.value.toString()))),
 ).withOptions({
 	version: "1.5",
-	$schema: "http://adaptivecards.io/schemas/adaptive-card.json",
+	$schema: SCHEMA_URL,
 });
 
 const result = await postCard(webhookUrl, card);

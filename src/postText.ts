@@ -3,7 +3,6 @@
  */
 
 import type { IAdaptiveCard } from "@microsoft/teams.cards";
-import { AdaptiveCard, TextBlock } from "@microsoft/teams.cards";
 
 /**
  * Webhook のレスポンス情報を格納する型
@@ -13,6 +12,8 @@ export interface WebHookResponse {
 	statusCode: number;
 	response: string;
 }
+
+export const SCHEMA_URL = "https://adaptivecards.io/schemas/adaptive-card.json";
 
 /**
  * Webhook のレスポンス結果を表示する関数
@@ -31,16 +32,19 @@ export function displayWebhookResult(webhookResponse: WebHookResponse): void {
  */
 export async function postText(webhookUrl: string, text: string): Promise<WebHookResponse> {
 	// Adaptive Card フォーマットでメッセージを構成
-	const card = new AdaptiveCard(
-		new TextBlock(text, {
-			wrap: true,
-		}),
-	).withOptions({
+	const rawCard: IAdaptiveCard = {
+		type: "AdaptiveCard",
+		$schema: SCHEMA_URL,
 		version: "1.5",
-		$schema: "http://adaptivecards.io/schemas/adaptive-card.json",
-	});
-
-	return postRawCard(webhookUrl, card);
+		body: [
+			{
+				type: "TextBlock",
+				text,
+				wrap: true,
+			},
+		],
+	};
+	return postRawCard(webhookUrl, rawCard);
 }
 
 /**
@@ -50,7 +54,7 @@ export async function postText(webhookUrl: string, text: string): Promise<WebHoo
  * **注意:** JSONスキーマがちゃんとメンテされておらず、存在しない要素タイプがある
 
  * @param webhookUrl - Teams Workflows Webhook の URL
- * @param card - Teams に投稿するAdaptiveCardオブジェクト(@microsoft/teams.cards または AC15 (Adaptive Cards v1.5))
+ * @param card - Teams に投稿するAdaptiveCardオブジェクト(@microsoft/teams.cards の AdaptiveCard または IAdaptiveCard型)
  * @returns Promise<WebHookResponse> - レスポンス情報
  */
 export async function postCard(webhookUrl: string, card: IAdaptiveCard): Promise<WebHookResponse> {

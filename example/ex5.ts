@@ -3,7 +3,7 @@
 // [Building Adaptive Cards | Teams AI Library (v2)](https://microsoft.github.io/teams-ai/typescript/in-depth-guides/adaptive-cards/building-adaptive-cards)
 // のサンプルを流用
 
-import { displayWebhookResult, postCard } from "@heiwa4126/twpost";
+import { displayWebhookResult, postCard, SCHEMA_URL } from "@heiwa4126/twpost";
 import type { IAdaptiveCard } from "@microsoft/teams.cards";
 import { getWebhookUrl } from "./hookUrl.js";
 
@@ -50,6 +50,7 @@ const card: IAdaptiveCard = {
 			data: { action: "purchase_item" },
 		},
 	],
+	$schema: SCHEMA_URL,
 	version: "1.5",
 };
 

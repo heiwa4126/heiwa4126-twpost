@@ -29,5 +29,3 @@ npm run smoketest
 
 @microsoft/teams.cards で使える Markdown 風記述
 
-- [テキスト機能 - Adaptive Cards | Microsoft Learn](https://learn.microsoft.com/ja-jp/adaptive-cards/authoring-cards/text-features)
-- [Markdown Reference](https://commonmark.org/help/)

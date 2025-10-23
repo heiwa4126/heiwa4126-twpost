@@ -5,9 +5,10 @@
 *.tgz
 *.ts
 biome.jsonc
+example/
+NOTE-ja.md
+pnpm-workspace.yaml
 tsconfig.json
 tsup.config.ts
 vitest.config.ts
-example/
-pnpm-workspace.yaml
 !*.d.ts
