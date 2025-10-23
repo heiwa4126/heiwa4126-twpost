@@ -1,11 +1,11 @@
 /**
- * Teams Webhook API用のユーティリティ関数群
+ * Utility functions for Teams Webhook API
  */
 
 import type { IAdaptiveCard } from "@microsoft/teams.cards";
 
 /**
- * Webhook のレスポンス情報を格納する型
+ * Type that stores webhook response information
  */
 export interface WebHookResponse {
 	payload: string;
@@ -16,22 +16,22 @@ export interface WebHookResponse {
 export const SCHEMA_URL = "https://adaptivecards.io/schemas/adaptive-card.json";
 
 /**
- * Webhook のレスポンス結果を表示する関数
+ * Function to display webhook response results
  *
- * @param webhookResponse - Webhook のレスポンス情報
+ * @param webhookResponse - Webhook response information
  */
 export function displayWebhookResult(webhookResponse: WebHookResponse): void {
 	console.log(webhookResponse);
 }
 
 /**
- * Teams Workflows Webhook URL に text 形式のメッセージを送信する
- * @param webhookUrl - Teams Workflows Webhook の URL
- * @param text - Teams に投稿するテキストメッセージ。限定的な markdown をサポート
- * @returns Promise<WebHookResponse> - レスポンス情報
+ * Send a text message to Teams Workflows Webhook URL
+ * @param webhookUrl - Teams Workflows Webhook URL
+ * @param text - Text message to post to Teams. Supports limited markdown
+ * @returns Promise<WebHookResponse> - Response information
  */
 export async function postText(webhookUrl: string, text: string): Promise<WebHookResponse> {
-	// Adaptive Card フォーマットでメッセージを構成
+	// Compose message in Adaptive Card format
 	const rawCard: IAdaptiveCard = {
 		type: "AdaptiveCard",
 		$schema: SCHEMA_URL,
@@ -48,26 +48,26 @@ export async function postText(webhookUrl: string, text: string): Promise<WebHoo
 }
 
 /**
- * Teams Workflows Webhook URL に Adaptive Card 形式のメッセージを送信する。
- * postRawCard() の TypeScript ラッパー。型チェック不要と思うなら直に postRawCard() を呼んでもいい
+ * Send an Adaptive Card message to Teams Workflows Webhook URL.
+ * TypeScript wrapper for postRawCard(). You can call postRawCard() directly if you don't need type checking.
  *
- * **注意:** JSONスキーマがちゃんとメンテされておらず、存在しない要素タイプがある
-
- * @param webhookUrl - Teams Workflows Webhook の URL
- * @param card - Teams に投稿するAdaptiveCardオブジェクト(@microsoft/teams.cards の AdaptiveCard または IAdaptiveCard型)
- * @returns Promise<WebHookResponse> - レスポンス情報
+ * **Note:** The JSON schema is not properly maintained and contains non-existent element types.
+ *
+ * @param webhookUrl - Teams Workflows Webhook URL
+ * @param card - AdaptiveCard object to post to Teams (AdaptiveCard or IAdaptiveCard type from `@microsoft/teams.cards`)
+ * @returns Promise<WebHookResponse> - Response information
  */
 export async function postCard(webhookUrl: string, card: IAdaptiveCard): Promise<WebHookResponse> {
 	return postRawCard(webhookUrl, card);
 }
 
 /**
- * Teams Workflows Webhook URL にオブジェクトを送信する。
- * rawCard は Adaptive Card 形式であることを期待。バリデーションはしない
+ * Send an object to Teams Workflows Webhook URL.
+ * rawCard is expected to be in Adaptive Card format. No validation is performed.
  *
- * @param webhookUrl - Teams Workflows Webhook の URL
- * @param rawCard - Teams に投稿するオブジェクト(Adaptive Card 形式を期待)
- * @returns Promise<WebHookResponse> - レスポンス情報
+ * @param webhookUrl - Teams Workflows Webhook URL
+ * @param rawCard - Object to post to Teams (expected to be in Adaptive Card format)
+ * @returns Promise<WebHookResponse> - Response information
  */
 export async function postRawCard(webhookUrl: string, rawCard: object): Promise<WebHookResponse> {
 	const encodedMsg = JSON.stringify({
@@ -80,7 +80,7 @@ export async function postRawCard(webhookUrl: string, rawCard: object): Promise<
 	});
 
 	try {
-		// POST リクエストの送信
+		// Send POST request
 		const response = await fetch(webhookUrl, {
 			method: "POST",
 			body: encodedMsg,
@@ -89,10 +89,10 @@ export async function postRawCard(webhookUrl: string, rawCard: object): Promise<
 			},
 		});
 
-		// レスポンステキストを取得
+		// Get response text
 		const responseText = await response.text();
 
-		// 結果の構造体を作成
+		// Create result structure
 		const result: WebHookResponse = {
 			payload: encodedMsg,
 			statusCode: response.status,
@@ -101,7 +101,7 @@ export async function postRawCard(webhookUrl: string, rawCard: object): Promise<
 
 		return result;
 	} catch (error) {
-		// エラー時のレスポンスを作成
+		// Create error response
 		const errorResult: WebHookResponse = {
 			payload: encodedMsg,
 			statusCode: 0,
