@@ -6,6 +6,7 @@
 *.ts
 biome.jsonc
 example/
+README-ja.md
 NOTE-ja.md
 pnpm-workspace.yaml
 tsconfig.json

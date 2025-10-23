@@ -13,4 +13,11 @@ curl -s https://adaptivecards.io/schemas/1.5.0/adaptive-card.json | npx json-sch
 import type { IAdaptiveCard } from "@microsoft/teams.cards";
 ```
 
-で十分だし、特定のエレメントが欠けてるのはIAdaptiveCardもスキーマも同様
+で十分だし、特定のエレメントが欠けてるのは IAdaptiveCard もスキーマも同様
+
+## 依存
+
+[adaptivecards - npm](https://www.npmjs.com/package/adaptivecards)
+は、いろいろあって放棄されたらしいので、
+[@microsoft/teams.cards - npm](https://www.npmjs.com/package/@microsoft/teams.cards)
+を使いました。

@@ -8,7 +8,7 @@ import { getWebhookUrl } from "./hookUrl.js";
 
 const webhookUrl = getWebhookUrl();
 
-const payload = {
+const rawCard = {
 	type: "AdaptiveCard",
 	$schema: SCHEMA_URL,
 	version: "1.5",
@@ -41,5 +41,5 @@ const payload = {
 	],
 };
 
-const result = await postRawCard(webhookUrl, payload);
+const result = await postRawCard(webhookUrl, rawCard);
 displayWebhookResult(result);

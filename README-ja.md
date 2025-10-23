@@ -5,7 +5,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org/)
 
-English | [日本語](https://github.com/heiwa4126/heiwa4126-twpost/blob/main/README-ja.md)
+[English](https://github.com/heiwa4126/heiwa4126-twpost/blob/main/README.md) | 日本語
 
 Teams の Workflows (Teams 版 Power Automate)の
 「Webhook 要求を受信したらチャットに投稿する」テンプレートから作った workflow の
@@ -34,7 +34,7 @@ displayWebhookResult(result);
 
 ### Adaptive Card オブジェクトを使用した投稿
 
-`@microsoft/teams.cards`を使って型安全に Adaptive Card を作成:
+`@microsoft/teams.cards`を使って型安全に Adaptive Card を作成：
 
 ```typescript
 import { postCard, displayWebhookResult, SCHEMA_URL } from "@heiwa4126/twpost";
@@ -63,7 +63,7 @@ displayWebhookResult(result);
 
 ### JSON ペイロードを直接使用した投稿
 
-Adaptive Card Designer で作成した JSON を直接使用:
+Adaptive Card Designer で作成した JSON を直接使用：
 
 ```typescript
 import { postRawCard, displayWebhookResult, SCHEMA_URL } from "@heiwa4126/twpost";
@@ -100,7 +100,7 @@ displayWebhookResult(result);
 
 ### 型安全を保ちつつ JSON ペイロードを使用した投稿
 
-型チェックを活用しながら、スキーマにない要素は型キャストで対応:
+型チェックを活用しながら、スキーマにない要素は型キャストで対応：
 
 ```typescript
 import { postCard, displayWebhookResult, SCHEMA_URL } from "@heiwa4126/twpost";
@@ -166,7 +166,7 @@ displayWebhookResult(result);
 ## 注意事項
 
 - `@microsoft/teams.cards`の JSON スキーマは完全ではなく、Teams で実際に使用可能な要素タイプが含まれていない場合があります
-- 新しい要素タイプ(例:ProgressRing)を使用する場合は、`postRawCard()`を使用するか、型キャストを行ってください。[example/ex4.ts](example/ex4.ts) にキャストの例があります。
+- 新しい要素タイプ（例：ProgressRing）を使用する場合は、`postRawCard()`を使用するか、型キャストを行ってください。[example/ex4.ts](example/ex4.ts) にキャストの例があります。
 
 ## 開発
 
