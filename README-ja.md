@@ -18,6 +18,7 @@ twpost は "Teams Webhook Post" の略です。
 
 ```sh
 npm install @heiwa4126/twpost
+npm install @microsoft/teams.cards # 必要に応じて
 ```
 
 ## 使用方法
@@ -175,6 +176,7 @@ displayWebhookResult(result);
 ```sh
 npm run init  # `npm init` ではない
 npm run smoketest
+npm install @microsoft/teams.cards # 必要に応じて
 ```
 
 ## ライセンス

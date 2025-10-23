@@ -15,6 +15,7 @@ twpost stands for "Teams Webhook Post".
 
 ```sh
 npm install @heiwa4126/twpost
+npm install @microsoft/teams.cards # if needed
 ```
 
 ## Usage
@@ -172,6 +173,7 @@ Getting started:
 ```sh
 npm run init  # Not `npm init`
 npm run smoketest
+npm install @microsoft/teams.cards # if needed
 ```
 
 ## License

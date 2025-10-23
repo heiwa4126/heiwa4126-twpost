@@ -64,7 +64,7 @@
 		"typescript": "^5.9.3",
 		"vitest": "^3.2.4"
 	},
-	"dependencies": {
-		"@microsoft/teams.cards": "^2.0.2"
+	"peerDependencies": {
+		"@microsoft/teams.cards": ">=2.0.0 <2.1.0"
 	}
 }
