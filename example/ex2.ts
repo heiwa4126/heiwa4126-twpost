@@ -1,4 +1,5 @@
 // 重要: `npm run build` の 後に実行してください
+//
 // [Adaptive Card Designer](https://adaptivecards.microsoft.com/designer) で作成した
 // Adaptive Card の JSONペイロードを直接使用する例
 
@@ -18,7 +19,7 @@ const payload = {
 			text: "**処理を開始しました** (ID=USO800)",
 		},
 		{
-			type: "ProgressRing",
+			type: "ProgressRing", // ProgressRing は生objectを使うしかない
 			label: "処理進行中...",
 			labelPosition: "After",
 			size: "Tiny",

@@ -49,7 +49,7 @@ export async function postText(webhookUrl: string, text: string): Promise<WebHoo
  * **注意:** JSONスキーマがちゃんとメンテされておらず、存在しない要素タイプがある
 
  * @param webhookUrl - Teams Workflows Webhook の URL
- * @param card - Teams に投稿するAdaptiveCardオブジェクト（@microsoft/teams.cards または AC15 (Adaptive Cards v1.5)）
+ * @param card - Teams に投稿するAdaptiveCardオブジェクト(@microsoft/teams.cards または AC15 (Adaptive Cards v1.5))
  * @returns Promise<WebHookResponse> - レスポンス情報
  */
 export async function postCard<T extends AdaptiveCard | AC15>(
@@ -61,11 +61,10 @@ export async function postCard<T extends AdaptiveCard | AC15>(
 
 /**
  * Teams Workflows Webhook URL に payload を送信する。
- * payload は Adaptive Card 形式の payload であることを想定しているが、ベリファイしていないので注意
- * 必要なら JSON Schema によるバリデーションを追加すること(http://adaptivecards.io/schemas/adaptive-card.json)
+ * payload は Adaptive Card 形式の payload であることを想定。バリデーションはしない。
  *
  * @param webhookUrl - Teams Workflows Webhook の URL
- * @param payload: - Teams に投稿する
+ * @param payload - Teams に投稿するオブジェクト (Adaptive Card 形式であることを期待する)
  * @returns Promise<WebHookResponse> - レスポンス情報
  */
 export async function postPayload(webhookUrl: string, payload: object): Promise<WebHookResponse> {
