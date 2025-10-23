@@ -42,18 +42,28 @@ export async function postTextToTeamsWebhook(
 		$schema: "http://adaptivecards.io/schemas/adaptive-card.json",
 	});
 
-	// Teams Webhook 用のペイロードを構成
-	const payload = {
+	return postPayload(webhookUrl, card);
+}
+
+/**
+ * Teams Workflows Webhook URL に Objectを送信する。
+ * ObjectはAdaptive Card 形式のpayloadであることを想定しているが、ベリファイしていないので注意
+ *
+ * Adaptive Card 形式のメッセージを送信する関数
+ *
+ * @param webhookUrl - Teams Workflows Webhook の URL
+ * @param payload: - Teams に投稿する
+ * @returns Promise<WebHookResponse> - レスポンス情報
+ */
+export async function postPayload(webhookUrl: string, payload: object): Promise<WebHookResponse> {
+	const encodedMsg = JSON.stringify({
 		attachments: [
 			{
 				contentType: "application/vnd.microsoft.card.adaptive",
-				content: card,
+				content: payload,
 			},
 		],
-	};
-
-	// JSON をエンコード
-	const encodedMsg = JSON.stringify(payload);
+	});
 
 	try {
 		// POST リクエストの送信
