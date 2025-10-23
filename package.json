@@ -15,7 +15,7 @@
 	},
 	"scripts": {
 		"init": "npm i && npm run build && npm run link",
-		"prepublishOnly": "npm run clean && npm run build && npm run link && npm run test:run && npm run smoketest",
+		"prepublishOnly": "npm run clean && npm run build && npm run link && npm test && npm run smoketest",
 		"clean": "rm -rf dist",
 		"build": "tsup",
 		"link": "mkdir -p node_modules/@heiwa4126 && ln -sfn ../../dist node_modules/@heiwa4126/twpost",
@@ -31,7 +31,8 @@
 		"ex2": ". .env && tsx ./example/ex2.ts",
 		"ex3": ". .env && tsx ./example/ex3.ts",
 		"security": "trivy fs --skip-dirs node_modules,cdk.out . && trivy config --skip-dirs node_modules,cdk.out .",
-		"audit": "npm audit && trivy fs --scanners vuln package.json"
+		"audit": "npm audit && trivy fs --scanners vuln package.json",
+		"types": "curl -s https://adaptivecards.io/schemas/1.5.0/adaptive-card.json | npx json-schema-to-typescript --no-additionalProperties > src/adaptive-card-v1.5.d.ts"
 	},
 	"keywords": [
 		"MS Teams",
@@ -55,6 +56,7 @@
 	},
 	"devDependencies": {
 		"@types/node": "^24.9.1",
+		"json-schema-to-typescript": "^15.0.4",
 		"ts-node": "^10.9.2",
 		"tsup": "^8.5.0",
 		"tsx": "^4.20.6",

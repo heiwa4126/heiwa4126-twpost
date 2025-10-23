@@ -2,6 +2,7 @@
  * Teams Webhook API用のユーティリティ関数群
  */
 import { AdaptiveCard, TextBlock } from "@microsoft/teams.cards";
+import type { AdaptiveCard as AC15 } from "./adaptive-card-v1.5.d.ts";
 
 /**
  * Webhook のレスポンス情報を格納する型
@@ -50,6 +51,10 @@ export async function postText(webhookUrl: string, text: string): Promise<WebHoo
  * @returns Promise<WebHookResponse> - レスポンス情報
  */
 export async function postCard(webhookUrl: string, card: AdaptiveCard): Promise<WebHookResponse> {
+	return postPayload(webhookUrl, card);
+}
+
+export async function postAdaptiveCard15(webhookUrl: string, card: AC15): Promise<WebHookResponse> {
 	return postPayload(webhookUrl, card);
 }
 

@@ -13,6 +13,6 @@ export default defineConfig({
 	external: ["@microsoft/teams.cards"],
 	dts: {
 		resolve: true,
-		entry: ["src/index.ts"],
+		entry: ["src/index.ts", "src/types.ts"],
 	},
 });
