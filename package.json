@@ -1,6 +1,6 @@
 {
 	"name": "@heiwa4126/twpost",
-	"version": "0.0.4-alpha.0",
+	"version": "0.0.4-alpha.1",
 	"description": "A package of functions for posting messages in Adaptive Cards format to Teams Workflows webhooks",
 	"type": "module",
 	"main": "./dist/index.cjs",
