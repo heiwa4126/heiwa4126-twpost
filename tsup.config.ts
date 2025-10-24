@@ -6,6 +6,7 @@ export default defineConfig({
 	target: "node18",
 	outDir: "dist",
 	bundle: true,
+	shims: true,
 	splitting: false,
 	sourcemap: false,
 	minify: false,
