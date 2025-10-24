@@ -4,6 +4,8 @@
 .vscode/
 *.tgz
 *.ts
+*.d.cts
+.nvmrc
 biome.jsonc
 example/
 README-ja.md

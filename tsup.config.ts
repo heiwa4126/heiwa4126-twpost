@@ -10,6 +10,11 @@ export default defineConfig({
 	sourcemap: false,
 	minify: false,
 	clean: true,
+	outExtension({ format }) {
+		return {
+			js: format === "cjs" ? ".cjs" : ".js",
+		};
+	},
 	external: ["@microsoft/teams.cards"],
 	dts: {
 		resolve: true,

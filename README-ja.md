@@ -1,4 +1,4 @@
-# heiwa4126-twpost
+# heiwa4126-twpost (@heiwa4126/twpost)
 
 [![npm version](https://img.shields.io/npm/v/@heiwa4126/twpost.svg)](https://www.npmjs.com/package/@heiwa4126/twpost)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -18,7 +18,6 @@ twpost は "Teams Webhook Post" の略です。
 
 ```sh
 npm install @heiwa4126/twpost
-npm install @microsoft/teams.cards # 必要に応じて
 ```
 
 ## 使用方法
