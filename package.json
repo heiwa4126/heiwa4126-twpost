@@ -62,7 +62,7 @@
 		"tsup": "^8.5.0",
 		"tsx": "^4.20.6",
 		"typescript": "^5.9.3",
-		"vitest": "^3.2.4"
+		"vitest": "^4.0.14"
 	},
 	"peerDependencies": {
 		"@microsoft/teams.cards": ">=2.0.0 <2.1.0"
